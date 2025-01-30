@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a389f11584f7bc34dbda6ce27950e454, type: 3}
+  m_Name: New Strike 1
+  m_EditorClassIdentifier: 
+  damage: 1
+  sprite: {fileID: 21300000, guid: bc6ae4a6b93d74f4fa517e50d6677622, type: 3}
+  cost: 2
+  aoE: 1
+  targets: 01000000ffffffff
