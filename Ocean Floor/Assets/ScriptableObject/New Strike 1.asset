@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Strike 1
   m_EditorClassIdentifier: 
   damage: 1
-  sprite: {fileID: 21300000, guid: bc6ae4a6b93d74f4fa517e50d6677622, type: 3}
+  icon: {fileID: 21300000, guid: bc6ae4a6b93d74f4fa517e50d6677622, type: 3}
   cost: 2
   aoE: 1
   targets: 01000000ffffffff

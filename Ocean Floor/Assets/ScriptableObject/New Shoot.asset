@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Shoot
   m_EditorClassIdentifier: 
   damage: 1
-  sprite: {fileID: 21300000, guid: 89e88fb029819e74f9e4867a2791ed6f, type: 3}
+  icon: {fileID: 21300000, guid: 89e88fb029819e74f9e4867a2791ed6f, type: 3}
   cost: 2
   range: 4
   maxTargets: 1

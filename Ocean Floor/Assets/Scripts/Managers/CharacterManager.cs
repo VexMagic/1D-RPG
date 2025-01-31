@@ -26,11 +26,11 @@ public class CharacterManager : MonoBehaviour
 
     private void Begin()
     {
-        allCharacters = allCharacters.OrderBy(x => Random.value).ToList();
+        allCharacters = allCharacters.OrderBy(x => Random.value).ToList(); //set the turn order for all characters
         EndTurn();
     }
 
-    public void EndTurn()
+    public void EndTurn() //select the next character in the turn order
     {
         if (selectedCharacter != null)
             selectedCharacter.Deselect();
@@ -60,7 +60,7 @@ public class CharacterManager : MonoBehaviour
         selectedCharacter = character;
     }
 
-    public Character GetCharacter(int tileIndex)
+    public Character GetCharacter(int tileIndex) //get a character on a specific tile
     {
         foreach (var item in allCharacters)
         {

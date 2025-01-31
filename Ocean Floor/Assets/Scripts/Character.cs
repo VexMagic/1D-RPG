@@ -20,7 +20,7 @@ public class Character : MonoBehaviour
     private int currentHealth;
     private bool AoE;
 
-    public int TilePos { get { return tilePos; } }
+    public int TilePos { get { return tilePos; } } //the tile the character is standing on
 
     private void Start()
     {
@@ -36,65 +36,61 @@ public class Character : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Math.Clamp(currentHealth, 0, maxHealth);
         SetHealthbar();
+
+        if (currentHealth == 0)
+        {
+            //add death
+        }
     }
 
-    private void SetHealthbar()
+    private void SetHealthbar() //updates the healthbar to show how much health compared to the max health the character has
     {
         float healthPercent = (float)currentHealth / (float)maxHealth;
-        Debug.Log(healthPercent);
 
         healthBar.size = new Vector2(healthPercent, healthBar.size.y);
         healthBar.transform.localPosition = new Vector3((1 - healthPercent) / -2, 0);
     }
 
-    public void SelectCharacter()
+    public void SelectCharacter() //this activates when a characters turn starts and set the UI to the correct abilities
     {
-        if (CharacterManager.instance.SelectedCharacter == this)
-        {
-            ActionManager.instance.ActivateActionBar(false);
-            CharacterManager.instance.SelectCharacter(null);
-            TileManager.instance.StopHightlight();
-        }
-        else
-        {
-            ActionManager.instance.SetAbilityValues(abilities);
-            selectedArrow.SetActive(true);
-            ActionManager.instance.ActivateActionBar(true);
-            CharacterManager.instance.SelectCharacter(this);
-            ActionManager.instance.ReSelectAction();
-        }
+        ActionManager.instance.SetAbilityValues(abilities); 
+        selectedArrow.SetActive(true);
+        ActionManager.instance.ActivateActionBar(true);
+        CharacterManager.instance.SelectCharacter(this);
+        ActionManager.instance.ReSelectAction();
     }
 
-    public void Deselect()
+    public void Deselect() //turn off the selected arrow above the character
     {
         selectedArrow.SetActive(false);
     }
 
-    public void GetTileTarget(int index)
+    public void GetTileTarget(int index) //activate selected ability on the targeted tile
     {
-        if (ActionManager.instance.ActionIndex >= 0)
+        if (ActionManager.instance.ActionIndex >= 0) //unique ability
         {
             ActivateAbility(index);
         }
-        else if (ActionManager.instance.ActionIndex == -1)
+        else if (ActionManager.instance.ActionIndex == -1) //move ability
         {
             Move(index);
         }
-        else 
+        else //turn ability
         {
             Turn();
         }
         Invoke(nameof(Reselect), 0.01f);
     }
 
-    private void ActivateAbility(int index)
+    private void ActivateAbility(int index) //activate unique ability on the targeted tile
     {
-        if (AoE)
+        if (AoE) //check if the ability targets all possible tiles
         {
-            foreach (var item in TileManager.instance.TileData)
+            foreach (var item in TileManager.instance.TileData) //target all highlighted tiles
             {
                 if (item.IsHighlighted)
                 {
+                    //check if there is a character on the tile before dealing damage
                     Character tempCharacter = CharacterManager.instance.GetCharacter(item.Index);
                     if (tempCharacter != null)
                         tempCharacter.TakeDamage(abilities[ActionManager.instance.ActionIndex].Damage);
@@ -103,6 +99,7 @@ public class Character : MonoBehaviour
         }
         else
         {
+            //check if there is a character on the tile before dealing damage
             Character tempCharacter = CharacterManager.instance.GetCharacter(index);
             if (tempCharacter != null)
                 tempCharacter.TakeDamage(abilities[ActionManager.instance.ActionIndex].Damage);
@@ -116,7 +113,7 @@ public class Character : MonoBehaviour
 
         if (ability is StrikeAbility)
         {
-            foreach (var item in (ability as StrikeAbility).Targets)
+            foreach (var item in (ability as StrikeAbility).Targets) //highlight all targetable tiles for a strike ability
             {
                 if (facingLeft)
                     tileList.Add(tilePos - item);
@@ -128,7 +125,7 @@ public class Character : MonoBehaviour
         else if (ability is ShootAbility)
         {
             int targets = (ability as ShootAbility).MaxTargets;
-            for (int i = 1; i <= (ability as ShootAbility).Range; i++)
+            for (int i = 1; i <= (ability as ShootAbility).Range; i++) //loop through all tiles in a direction until the max targets or max range is reached
             {
                 int tempTile = tilePos;
 
@@ -146,15 +143,17 @@ public class Character : MonoBehaviour
                         break;
                 }
             }
+
+            //this makes sure that the pierce effect works
             AoE = true;
         }
         else if (ability is ThrowAbility)
         {
-            for (int i = (ability as ThrowAbility).MinRange; i <= (ability as ThrowAbility).Range; i++)
+            for (int i = (ability as ThrowAbility).MinRange; i <= (ability as ThrowAbility).Range; i++) //loop through all tiles within range
             {
                 int tempTile = tilePos;
 
-                if ((ability as ThrowAbility).OmniDirectional)
+                if ((ability as ThrowAbility).OmniDirectional) //target both infront and behind
                 {
                     Character tempCharacter = CharacterManager.instance.GetCharacter(tempTile + i);
                     if (tempCharacter != null || (ability as ThrowAbility).CanTargetEmpty)
@@ -168,7 +167,7 @@ public class Character : MonoBehaviour
                         tileList.Add(tempTile - i);
                     }
                 }
-                else
+                else //only target infront 
                 {
                     if (facingLeft)
                         tempTile -= i;
@@ -219,7 +218,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void Reselect()
+    private void Reselect() //update all the highlighted tiles after an action is activated
     {
         ActionManager.instance.ReSelectAction();
     }

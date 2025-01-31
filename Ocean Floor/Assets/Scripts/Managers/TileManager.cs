@@ -29,9 +29,10 @@ public class TileManager : MonoBehaviour
 
     public void SelectTile(int index)
     {
-        if (!ActionManager.instance.SpendActions())
+        if (!ActionManager.instance.SpendActions()) //check if there is enough action points to use the ability
             return;
 
+        //activate selected ability
         CharacterManager.instance.SelectedCharacter.GetTileTarget(index);
 
         StopHightlight();
@@ -66,10 +67,12 @@ public class TileManager : MonoBehaviour
     {
         GameObject tileObject = Instantiate(Tile, transform);
 
+        //set tile position
         float indexOffset = index - ((float)(amount - 1) / 2);
         float xPos = indexOffset * 1.5f;
         tileObject.transform.localPosition = new Vector3(xPos, 0, 0);
 
+        //add the new tile's script to a list for later use
         GroundTile tile = tileObject.GetComponent<GroundTile>();
         tile.SetIndex(index);
 

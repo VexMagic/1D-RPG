@@ -30,7 +30,7 @@ public class ActionManager : MonoBehaviour
         SetAction(actionsPerTurn);
     }
 
-    public void SetAbilityValues(BaseAbility[] abilities)
+    public void SetAbilityValues(BaseAbility[] abilities) //update the ability UI
     {
         for (int i = 0; i < abilities.Length; i++)
         {
@@ -44,7 +44,7 @@ public class ActionManager : MonoBehaviour
         }
     }
 
-    public bool SpendActions()
+    public bool SpendActions() //spend action points
     {
         int actions = 0;
         ActionButton actionButton = GetSelectedAction();
@@ -63,7 +63,7 @@ public class ActionManager : MonoBehaviour
         return true;
     }
 
-    private void SetAction(int amount)
+    private void SetAction(int amount) //update the action point display
     {
         actionsLeft = amount;
         actionsText.text = "Actions: " + actionsLeft;
