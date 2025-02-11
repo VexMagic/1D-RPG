@@ -15,11 +15,14 @@ public class GameLoopManager : MonoBehaviour
     public int enemiesDefeated = 0;
 
     [Header("Player Tracking")]
-    public List<PlayerCharacter> playerParty = new List<PlayerCharacter>();
+    public List<BaseCharacter> playerParty = new List<BaseCharacter>();
 
     [Header("Game State")]
     public bool isGameOver = false;
     public bool victoryAchieved = false;
+
+    [Header("Enemy Spawning")]
+    public GameObject[] enemyPrefabs; // Assign enemy prefabs in the Inspector
 
     private void Awake()
     {
@@ -43,14 +46,20 @@ public class GameLoopManager : MonoBehaviour
         }
 
         currentWave++;
+        Debug.Log($"Starting Wave {currentWave}");
         enemiesOnField = SpawnEnemiesForWave(currentWave);
         enemiesDefeated = 0;
     }
 
     private int SpawnEnemiesForWave(int waveNumber)
     {
-        // TODO: Implement enemy spawning logic based on wave number.
-        return Mathf.Clamp(waveNumber * 2, 1, 10); // Example scaling
+        int enemyCount = Mathf.Clamp(waveNumber * 2, 1, 10);
+        for (int i = 0; i < enemyCount; i++)
+        {
+            GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]);
+            // Set enemy position or other properties
+        }
+        return enemyCount;
     }
 
     public void OnEnemyDefeated()
@@ -64,10 +73,23 @@ public class GameLoopManager : MonoBehaviour
         }
     }
 
-    public void OnPlayerDefeated(/*PlayerCharacter player*/)
+    public void OnPlayerDefeated(BaseCharacter player)
     {
-        //playerParty.Remove(player);
-        CheckDefeat();
+        playerParty.Remove(player);
+        if (playerParty.Count == 0) // Defeat if all players are dead
+        {
+            CheckDefeat();
+        }
+    }
+
+    public void RevivePlayer(BaseCharacter player)
+    {
+
+        //if (player.isDead)
+        //{
+        //    player.isDead = false;
+        //    playerParty.Add(player);
+        //}
     }
 
     private void CheckVictory()
@@ -77,17 +99,44 @@ public class GameLoopManager : MonoBehaviour
             Debug.Log("Victory! Game Completed.");
             victoryAchieved = true;
             isGameOver = true;
-            // TODO: Implement victory screen or progress to next stage
+            ShowVictoryScreen();
         }
     }
 
     private void CheckDefeat()
     {
-        if (playerParty.Count == 0) // If all players are dead
+        if (playerParty.Count == 0)
         {
             Debug.Log("Game Over! All players are defeated.");
             isGameOver = true;
-            // TODO: Implement game restart logic (roguelike style)
+            ShowGameOverScreen();
         }
+    }
+
+    private void ShowVictoryScreen()
+    {
+        // TODO: Implement victory screen or progress to next stage
+        Debug.Log("Show Victory Screen");
+    }
+
+    private void ShowGameOverScreen()
+    {
+        // TODO: Implement game over screen or restart logic
+        Debug.Log("Show Game Over Screen");
+    }
+
+    public void LoadCombatRoom()
+    {
+        // Reset wave and enemy tracking
+        currentWave = 0;
+        enemiesOnField = 0;
+        enemiesDefeated = 0;
+        StartNextWave();
+    }
+
+    public void LoadShopRoom()
+    {
+        // TODO: Implement shop logic
+        Debug.Log("Entering Shop Room");
     }
 }
