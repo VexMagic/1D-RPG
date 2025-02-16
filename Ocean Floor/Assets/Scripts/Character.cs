@@ -10,17 +10,17 @@ public class Character : MonoBehaviour
 {
     [SerializeField] private int tilePos;
     [SerializeField] private GameObject selectedArrow;
-    [SerializeField] private GameObject body;
+    [SerializeField] public GameObject body;
     [SerializeField] private SpriteRenderer healthBar;
 
     [SerializeField] private int maxHealth;
     [SerializeField] private BaseAbility[] abilities;
 
-    private bool facingLeft = false;
+    public bool facingLeft = false;
     private int currentHealth;
     private bool AoE;
 
-    public int TilePos { get { return tilePos; } } //the tile the character is standing on
+    public int TilePos { get { return tilePos; } set { tilePos = TilePos; } } //the tile the character is standing on
 
     private void Start()
     {
@@ -71,14 +71,7 @@ public class Character : MonoBehaviour
         {
             ActivateAbility(index);
         }
-        else if (ActionManager.instance.ActionIndex == -1) //move ability
-        {
-            Move(index);
-        }
-        else //turn ability
-        {
-            Turn();
-        }
+        
         Invoke(nameof(Reselect), 0.01f);
     }
 
@@ -92,8 +85,8 @@ public class Character : MonoBehaviour
                 {
                     //check if there is a character on the tile before dealing damage
                     Character tempCharacter = CharacterManager.instance.GetCharacter(item.Index);
-                    if (tempCharacter != null)
-                        tempCharacter.TakeDamage(abilities[ActionManager.instance.ActionIndex].Damage);
+                    //if (tempCharacter != null)
+                    //    tempCharacter.TakeDamage(abilities[ActionManager.instance.ActionIndex].Damage);
                 }
             }
         }
@@ -101,8 +94,8 @@ public class Character : MonoBehaviour
         {
             //check if there is a character on the tile before dealing damage
             Character tempCharacter = CharacterManager.instance.GetCharacter(index);
-            if (tempCharacter != null)
-                tempCharacter.TakeDamage(abilities[ActionManager.instance.ActionIndex].Damage);
+            //if (tempCharacter != null)
+            //    tempCharacter.TakeDamage(abilities[ActionManager.instance.ActionIndex].Damage);
         }
     }
 
@@ -187,36 +180,7 @@ public class Character : MonoBehaviour
         TileManager.instance.HighlightTiles(tileList, AoE);
     }
 
-    private void Move(int index)
-    {
-        Character tempCharacter = CharacterManager.instance.GetCharacter(index);
-        if (tempCharacter != null)
-        {
-            tempCharacter.SetPosition(tilePos);
-        }
-
-        SetPosition(index);
-    }
-
-    private void SetPosition(int index)
-    {
-        tilePos = index;
-        transform.position = new Vector3(TileManager.instance.GetTilePos(index), transform.position.y);
-    }
-
-    private void Turn()
-    {
-        facingLeft = !facingLeft;
-
-        if (facingLeft)
-        {
-            body.transform.eulerAngles = new Vector3(0, 180);
-        }
-        else
-        {
-            body.transform.eulerAngles = new Vector3(0, 0);
-        }
-    }
+   
 
     private void Reselect() //update all the highlighted tiles after an action is activated
     {
