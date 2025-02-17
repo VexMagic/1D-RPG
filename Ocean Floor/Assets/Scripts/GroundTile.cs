@@ -36,7 +36,7 @@ public class GroundTile : MonoBehaviour
     {
         if (isHighlighted)
         {
-            TileManager.instance.SelectTile(index);
+            TileManager.instance.SelectTile(index, ActionManager.instance.CurrentAbility);
         }
         else
         {

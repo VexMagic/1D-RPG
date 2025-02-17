@@ -27,13 +27,13 @@ public class TileManager : MonoBehaviour
         return tiles[index].transform.position.x;
     }
 
-    public void SelectTile(int index)
+    public void SelectTile(int index, BaseAbility ability)
     {
         if (!ActionManager.instance.SpendActions()) //check if there is enough action points to use the ability
             return;
 
         //activate selected ability
-        CharacterManager.instance.SelectedCharacter.GetTileTarget(index);
+        ability.ActivateAbility(index, CharacterManager.instance.SelectedCharacter);
 
         StopHightlight();
     }

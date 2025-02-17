@@ -12,11 +12,10 @@ public class ActionManager : MonoBehaviour
     [SerializeField] private int actionsPerTurn;
 
     private ActionButton[] buttons;
-
+    private BaseAbility currentAbility;
     private int actionsLeft;
-    private int actionIndex;
 
-    public int ActionIndex {  get { return actionIndex; } }
+    public BaseAbility CurrentAbility {  get { return currentAbility; } }
 
     private void Awake()
     {
@@ -32,16 +31,16 @@ public class ActionManager : MonoBehaviour
 
     public void SetAbilityValues(BaseAbility[] abilities) //update the ability UI
     {
-        for (int i = 0; i < abilities.Length; i++)
-        {
-            foreach (var item in buttons)
-            {
-                if (item.Index == i)
-                {
-                    item.SetValues(abilities[i]);
-                }
-            }
-        }
+        //Debug.Log("ability length: " +  abilities.Length);
+        //for (int i = 0; i < abilities.Length; i++)
+        //{
+        //    foreach (var item in buttons)
+        //    {
+        //        Debug.Log(abilities[i]);
+        //        item.SetValues(abilities[i]);
+
+        //    }
+        //}
     }
 
     public bool SpendActions() //spend action points
@@ -69,9 +68,9 @@ public class ActionManager : MonoBehaviour
         actionsText.text = "Actions: " + actionsLeft;
     }
 
-    public void SetActionIndex(int index)
+    public void SetCurrentAbility (BaseAbility ability)
     {
-        actionIndex = index;
+        currentAbility = ability;
     }
 
     public void DeSelectActions()

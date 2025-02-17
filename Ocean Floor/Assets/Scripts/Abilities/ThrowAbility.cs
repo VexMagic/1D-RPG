@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Throw", menuName = "Ability/Throw")]
+
 public class ThrowAbility : BaseAbility
 {
     [SerializeField] private int range = 1;

@@ -8,7 +8,6 @@ using UnityEngine.TextCore.Text;
 
 public class MovementType : ScriptableObject
 {
-    public int movementRange;
 
     public virtual void Move(int index, int tilePos, Character character)
     {

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Strike", menuName = "Ability/Strike")]
 public class StrikeAbility : BaseAbility
 {
     [SerializeField] private bool aoE;  //target everyone within the range
