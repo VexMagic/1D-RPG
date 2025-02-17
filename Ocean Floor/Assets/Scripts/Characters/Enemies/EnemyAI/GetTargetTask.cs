@@ -8,10 +8,11 @@ public class GetTargetTask : Node
         Character target;
         int targetPos;
         int targetIndex;
-
-        public GetTargetTask(int targetIndex) : base()
+        Character character;
+        public GetTargetTask(Character character, int targetIndex) : base()
         {
             this.targetIndex = targetIndex;
+            this.character = character;
         }
 
         public override NodeState Evaluate()
@@ -22,27 +23,22 @@ public class GetTargetTask : Node
 
             while (!targetFound)
             {
-                // Check left
-                target = CharacterManager.instance.GetCharacter(targetIndex - searchRadius);
-                if (targetPos != -1)
+                if(CharacterManager.instance.GetCharacter(character.TilePos + searchRadius) != null)
                 {
+                    target = CharacterManager.instance.GetCharacter(character.TilePos + searchRadius);
                     targetFound = true;
-                    targetIndex -= searchRadius;
-                    break;
                 }
-
-                // Check right
-                target = CharacterManager.instance.GetCharacter(targetIndex + searchRadius);
-                if (targetPos != -1)
+                else if (CharacterManager.instance.GetCharacter(character.TilePos - searchRadius) != null)
                 {
+                    target = CharacterManager.instance.GetCharacter(character.TilePos - searchRadius);
                     targetFound = true;
-                    targetIndex += searchRadius;
-                    break;
                 }
-
-                searchRadius++;
+                else
+                {
+                    searchRadius++;
+                }
             }
-
+            Debug.Log("Target found at index: " + targetIndex);
             parent.SetData("target", targetIndex);
             parent.SetData("targetPos", targetPos);
             return NodeState.success;

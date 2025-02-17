@@ -16,15 +16,17 @@ public class BasicEnemyBT : BehaviorTree
             //här är en sequence, den kommer göra dens barn i ordning
             new Sequence(new List<Node>
             {
-                
+                new GetTargetTask(thisCharacter, 0),
                 //om basic enemy har för lågt HP flyttar den sig och sen healar
-                new MoveTask(targetIndex),
+                new MoveTask(thisCharacter, targetIndex),
 
             }),
-            
+
             new Sequence(new List<Node>
             {
-                new MoveTask(targetIndex),
+                new GetTargetTask(thisCharacter, 0),
+
+                new MoveTask(thisCharacter, targetIndex),
             }),
         });
         return root;

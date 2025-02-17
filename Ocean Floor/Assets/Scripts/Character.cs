@@ -222,4 +222,9 @@ public class Character : MonoBehaviour
     {
         ActionManager.instance.ReSelectAction();
     }
+
+    public void EnemyMove(int tilePos)
+    {
+        Move(tilePos);
+    }
 }

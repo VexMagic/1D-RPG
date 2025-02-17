@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -9,9 +10,11 @@ namespace BehaviorTreeSpace
     public class MoveTask : Node
     {
         int targetIndex;
-        public MoveTask(int targetIndex) : base() 
+        Character character;
+        public MoveTask(Character character, int targetIndex) : base() 
         {
             this.targetIndex = targetIndex;
+            this.character = character;
         }
 
 
@@ -20,6 +23,24 @@ namespace BehaviorTreeSpace
 
         public override NodeState Evaluate()
         {
+            targetIndex = (int)parent.GetData("target");
+            
+            if(character.TilePos != targetIndex + 1 && character.TilePos != targetIndex - 1)
+            {
+                //move
+                if (character.TilePos < targetIndex)
+                {
+                    character.EnemyMove(character.TilePos + 1);
+                }
+                else
+                {
+                    character.EnemyMove(character.TilePos - 1);
+                }
+            }
+            else
+            {
+               return NodeState.failure;
+            }
             return NodeState.success;
         }
 
