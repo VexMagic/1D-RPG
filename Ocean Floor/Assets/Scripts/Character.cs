@@ -1,3 +1,4 @@
+using BehaviorTreeSpace;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,9 +17,15 @@ public class Character : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private BaseAbility[] abilities;
 
+    
+    [SerializeField] private bool isEnemy;
+    [SerializeField] private BehaviorTree behaviorTree;
+
     private bool facingLeft = false;
     private int currentHealth;
     private bool AoE;
+    public bool IsEnemy { get { return isEnemy; } } //the tile the character is standing on
+    public bool FacingLeft { get { return facingLeft; } } //the tile the character is standing on
 
     public int TilePos { get { return tilePos; } } //the tile the character is standing on
 
@@ -29,6 +36,12 @@ public class Character : MonoBehaviour
 
         CharacterManager.instance.AddCharacterToList(this);
         Deselect();
+
+        //if its an enemy get its behavior tree
+        if (isEnemy)
+        {
+            behaviorTree = gameObject.GetComponent<BehaviorTreeSpace.BehaviorTree>();
+        }
     }
 
     public void TakeDamage(int damage)
@@ -223,8 +236,28 @@ public class Character : MonoBehaviour
         ActionManager.instance.ReSelectAction();
     }
 
+    public void StartEnemyTurn() //activate the behavior tree for the enemy
+    {
+        int numberOfTurns = 4;
+
+        for (int i = 0; i < numberOfTurns; i++)
+        {
+            Invoke(nameof(SearchTree), 0.01f);
+        }
+
+    }
+    private void SearchTree()
+    {
+        behaviorTree.Search();
+    }
+
     public void EnemyMove(int tilePos)
     {
         Move(tilePos);
     }
+    public void EnemyTurnAround()
+    {
+        Turn();
+    }
+
 }

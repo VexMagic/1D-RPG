@@ -23,7 +23,7 @@ namespace BehaviorTreeSpace
 
         public override NodeState Evaluate()
         {
-            targetIndex = (int)parent.GetData("target");
+            targetIndex = (int)parent.GetData("targetPos");
             
             if(character.TilePos != targetIndex + 1 && character.TilePos != targetIndex - 1)
             {
@@ -41,6 +41,7 @@ namespace BehaviorTreeSpace
             {
                return NodeState.failure;
             }
+            Debug.Log("Moving to target");
             return NodeState.success;
         }
 

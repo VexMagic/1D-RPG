@@ -13,7 +13,13 @@ public class BasicEnemyBT : BehaviorTree
         //detta betyder att bara en av dens barn kommer köras igenom helt
         Node root = new Selector(new List<Node>
         {
-            //här är en sequence, den kommer göra dens barn i ordning
+            //the sequence that moves the enemy to the target
+            new Sequence(new List<Node>
+            {
+                new GetTargetTask(thisCharacter, 0),
+
+                new TurnTask(thisCharacter, targetIndex),
+            }),
             new Sequence(new List<Node>
             {
                 new GetTargetTask(thisCharacter, 0),
@@ -21,12 +27,12 @@ public class BasicEnemyBT : BehaviorTree
                 new MoveTask(thisCharacter, targetIndex),
 
             }),
-
+            //the sequence that turns the enemy to face the target
+            //the sequence that attacks the target
             new Sequence(new List<Node>
             {
                 new GetTargetTask(thisCharacter, 0),
-
-                new MoveTask(thisCharacter, targetIndex),
+                new BasicAttackTask(thisCharacter, 1),
             }),
         });
         return root;

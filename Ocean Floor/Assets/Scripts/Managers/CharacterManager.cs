@@ -38,11 +38,19 @@ public class CharacterManager : MonoBehaviour
         ActionManager.instance.StartTurn();
         ActionManager.instance.DeSelectActions();
 
+
         initiativeOrder++;
         if (initiativeOrder == allCharacters.Count)
             initiativeOrder = 0;
 
+
         allCharacters[initiativeOrder].SelectCharacter();
+
+        if(selectedCharacter != null && selectedCharacter.IsEnemy)
+        {
+            selectedCharacter.StartEnemyTurn();
+            EndTurn();
+        }
     }
 
     public void AddCharacterToList(Character character)

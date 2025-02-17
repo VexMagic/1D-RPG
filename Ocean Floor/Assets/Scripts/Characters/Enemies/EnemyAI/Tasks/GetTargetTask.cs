@@ -38,9 +38,9 @@ public class GetTargetTask : Node
                     searchRadius++;
                 }
             }
-            Debug.Log("Target found at index: " + targetIndex);
-            parent.SetData("target", targetIndex);
-            parent.SetData("targetPos", targetPos);
+            Debug.Log("Target found at index: " + target.TilePos);
+            parent.SetData("target", target);
+            parent.SetData("targetPos", target.TilePos);
             return NodeState.success;
         }
     }
