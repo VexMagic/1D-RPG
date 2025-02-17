@@ -73,7 +73,7 @@ public class BaseAbility : ScriptableObject
         }
         if (movementAbility)
         {
-            movementType.Move(abilityRange, character.TilePos, character);
+            movementType.Move(index, character.TilePos, character);
         }
         if (healAbility)
         { }

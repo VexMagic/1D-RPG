@@ -52,6 +52,6 @@ public class ActionButton : MonoBehaviour
 
     public void HighlightTiles() //indicate which tiles can be targeted by the selected ability
     {
-        currentAbility.GetAbilityTargets(CharacterManager.instance.SelectedCharacter);
+        if(currentAbility!=null)currentAbility.GetAbilityTargets(CharacterManager.instance.SelectedCharacter);
     }
 }

@@ -20,7 +20,7 @@ public class Character : MonoBehaviour
     private int currentHealth;
     private bool AoE;
 
-    public int TilePos { get { return tilePos; } set { tilePos = TilePos; } } //the tile the character is standing on
+    public int TilePos { get { return tilePos; } set { tilePos = value; } } //the tile the character is standing on
 
     private void Start()
     {

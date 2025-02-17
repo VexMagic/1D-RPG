@@ -13,13 +13,18 @@ public class BasicMovement: MovementType
     // Update is called once per frame
     public override void Move(int index, int tilePos, Character character)
     {
-        Character tempCharacter = CharacterManager.instance.GetCharacter(character.TilePos + index);
+        Character tempCharacter = CharacterManager.instance.GetCharacter( index);
         if (tempCharacter != null)
         {
+            Debug.Log("Couldnt move there since there was already someone there");
             base.SetPosition(character.TilePos, character);
         }
-
-        base.SetPosition(character.TilePos + index, character);
+        else
+        {
+            Debug.Log("Moved");
+            base.SetPosition(index, character);
+        }
+        
     }
    
 }

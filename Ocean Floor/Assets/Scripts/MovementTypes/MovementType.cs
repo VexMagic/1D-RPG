@@ -15,7 +15,9 @@ public class MovementType : ScriptableObject
     }
     public virtual void SetPosition(int index, Character character)
     {
+        Debug.Log(index);
         character.TilePos = index;
         character.transform.position = new Vector3(TileManager.instance.GetTilePos(index), character.transform.position.y);
+        Debug.Log("new Pos: " + character.TilePos);
     }
 }
