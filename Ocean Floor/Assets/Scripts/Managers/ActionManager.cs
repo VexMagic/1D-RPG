@@ -16,7 +16,7 @@ public class ActionManager : MonoBehaviour
     private int actionsLeft;
 
     public BaseAbility CurrentAbility {  get { return currentAbility; } }
-
+    public int ActionsLeft { get { return actionsLeft; } }
     private void Awake()
     {
         instance = this;
@@ -31,19 +31,16 @@ public class ActionManager : MonoBehaviour
 
     public void SetAbilityValues(BaseAbility[] abilities) //update the ability UI
     {
-        //Debug.Log("ability length: " +  abilities.Length);
-        //for (int i = 0; i < abilities.Length; i++)
-        //{
-        //    foreach (var item in buttons)
-        //    {
-        //        Debug.Log(abilities[i]);
-        //        item.SetValues(abilities[i]);
+        for (int i = 0; i < abilities.Length; i++)
+        {
+            foreach (var item in buttons)
+            {
+                item.SetValues(abilities[i]);
 
-        //    }
-        //}
+            }
+        }
     }
-
-    public bool SpendActions() //spend action points
+    public bool CheckActionsLeft()
     {
         int actions = 0;
         ActionButton actionButton = GetSelectedAction();
@@ -57,9 +54,20 @@ public class ActionManager : MonoBehaviour
         {
             return false;
         }
-
-        SetAction(actionsLeft - actions);
         return true;
+    }
+    public void SpendActions() //spend action points
+    {
+        int actions = 0;
+        ActionButton actionButton = GetSelectedAction();
+
+        if (actionButton != null)
+        {
+            actions = actionButton.Cost;
+            Debug.Log(actions);
+        }
+        SetAction(actionsLeft - actions);
+       
     }
 
     private void SetAction(int amount) //update the action point display

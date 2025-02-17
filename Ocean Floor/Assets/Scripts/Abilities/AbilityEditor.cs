@@ -21,8 +21,7 @@ public class AbilityEditor : Editor //This script allows us to show different pr
 
 
     private SerializedProperty dmgAmountProp;
-    private SerializedProperty targetedAttackProp;
-    private SerializedProperty automaticAttackProp;
+    private SerializedProperty accuracyProp;
 
     private SerializedProperty movementTypeProp;
     private SerializedProperty healAmountProp;
@@ -47,8 +46,7 @@ public class AbilityEditor : Editor //This script allows us to show different pr
         healAbilityProp = serializedObject.FindProperty("healAbility");
         // Cache the properties
         dmgAmountProp = serializedObject.FindProperty("dmgAmount");
-        targetedAttackProp = serializedObject.FindProperty("targetedAttack");
-        automaticAttackProp = serializedObject.FindProperty("automaticAttack");
+        accuracyProp = serializedObject.FindProperty("accuracy");
         movementTypeProp = serializedObject.FindProperty("movementType");
         healAmountProp = serializedObject.FindProperty("healAmount");
 
@@ -100,8 +98,7 @@ public class AbilityEditor : Editor //This script allows us to show different pr
         {
             EditorGUI.indentLevel+=3;
             EditorGUILayout.PropertyField(dmgAmountProp, new GUIContent("Damage Amount"));
-            EditorGUILayout.PropertyField(targetedAttackProp, new GUIContent("Targeted Attack"));
-            EditorGUILayout.PropertyField(automaticAttackProp, new GUIContent("Automatic Attack"));
+            EditorGUILayout.PropertyField(accuracyProp, new GUIContent("Accuracy"));
             EditorGUI.indentLevel-=3;
         }
 

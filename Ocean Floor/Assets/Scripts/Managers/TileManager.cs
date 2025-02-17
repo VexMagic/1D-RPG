@@ -29,13 +29,25 @@ public class TileManager : MonoBehaviour
 
     public void SelectTile(int index, BaseAbility ability)
     {
-        if (!ActionManager.instance.SpendActions()) //check if there is enough action points to use the ability
+        if (!ActionManager.instance.CheckActionsLeft()) //check if there is enough action points to use the ability
+        {
+            StopHightlight();
             return;
+        }
+
 
         //activate selected ability
+        ActionManager.instance.SpendActions();
         ability.ActivateAbility(index, CharacterManager.instance.SelectedCharacter);
 
         StopHightlight();
+
+        //Reselects the ability if there are enough action points left otherwise deselects it and removes highlihgts
+        if (ActionManager.instance.CheckActionsLeft())
+        {
+            ActionManager.instance.ReSelectAction();
+        }
+        else ActionManager.instance.DeSelectActions();
     }
 
     public void StopHightlight()
@@ -44,7 +56,7 @@ public class TileManager : MonoBehaviour
     }
 
     public void HighlightTiles(List<int> indexes, bool AoE)
-    {
+    { 
         for (int i = 0; i < tiles.Count; i++)
         {
             tileData[i].Highlight(indexes.Contains(i), AoE);

@@ -19,7 +19,7 @@ public class AbilityTargeting
     public bool isAoE;
     public void GetAvaialbleTargets(Character character)
     {
-        Debug.Log("GetAvailableTargets() from AbilityTargeting running");
+        targetTileList.Clear();
         switch (targetingType)
         {
             case TargetingType.MovementTargeting:
@@ -38,7 +38,6 @@ public class AbilityTargeting
                 SelfTargeting(character);
                 break;
         }
-        Debug.Log(targetingType);
 
         TileManager.instance.HighlightTiles(targetTileList, isAoE);
     }
@@ -50,17 +49,33 @@ public class AbilityTargeting
     }
     private void MeleeTargeting(Character character)
     {
+        int tempTile = character.TilePos;
         if (omniDirectional)
         {
-            targetTileList.Add(character.TilePos - 1);
-            targetTileList.Add(character.TilePos + 1);
+           
+            Character tempCharacter1 = CharacterManager.instance.GetCharacter(tempTile - 1);
+            if (tempCharacter1 != null)
+            {
+                targetTileList.Add(tempTile);
+            }
+            tempCharacter1 = CharacterManager.instance.GetCharacter(tempTile +1 );
+            if (tempCharacter1 != null)
+            {
+                targetTileList.Add(tempTile);
+            }
         }
         else
         {
             if (character.facingLeft)
-                targetTileList.Add(character.TilePos - 1);
+                tempTile -= 1;
             else
-                targetTileList.Add(character.TilePos + 1);
+                tempTile += 1;
+
+            Character tempCharacter = CharacterManager.instance.GetCharacter(tempTile);
+            if (tempCharacter != null)
+            {
+                targetTileList.Add(tempTile);
+            }
 
         }
     }

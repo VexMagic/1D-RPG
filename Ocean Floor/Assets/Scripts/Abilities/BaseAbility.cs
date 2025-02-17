@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,8 +34,7 @@ public class BaseAbility : ScriptableObject
     //Unique Fields
     //Attack
     [SerializeField] private int dmgAmount;
-    [SerializeField] private bool targetedAttack;
-    [SerializeField] private bool automaticAttack;
+    [SerializeField] private int accuracy;
     //Movement
     [SerializeField] private MovementType movementType;
     //Special
@@ -58,18 +58,21 @@ public class BaseAbility : ScriptableObject
     {
         if (attackAbility)
         {
-            foreach (var item in TileManager.instance.TileData) //target all highlighted tiles
-            {
-                if (item.IsHighlighted)
-                {
-                    //check if there is a character on the tile before dealing damage
-                    Character tempCharacter = CharacterManager.instance.GetCharacter(item.Index);
-                    if (tempCharacter != null)
-                    {
+            //FOR AOE DAMAGE
+            //foreach (var item in TileManager.instance.TileData) //target all highlighted tiles
+            //{
+            //    if (item.IsHighlighted)
+            //    {
+            //        //check if there is a character on the tile before dealing damage
+            //        Character tempCharacter = CharacterManager.instance.GetCharacter(item.Index);
+            //        if (tempCharacter != null)
+            //        {
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
+
+            DealDamage(index);
         }
         if (movementAbility)
         {
@@ -81,10 +84,18 @@ public class BaseAbility : ScriptableObject
         { }
 
     }
-    
+
     //some abilities might deal extra damage if a condition is met
     public virtual bool BonusDamage(int targetTile, int sourceTile)
     {
         return false;
+    }
+
+    public void DealDamage(int index)
+    {
+        //check if there is a character on the tile before dealing damage
+        Character tempCharacter = CharacterManager.instance.GetCharacter(index);
+        if (tempCharacter != null)
+            tempCharacter.TakeDamage(ActionManager.instance.CurrentAbility.dmgAmount);
     }
 }

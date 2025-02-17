@@ -292,9 +292,17 @@ PrefabInstance:
       value: Action Button
       objectReference: {fileID: 0}
     - target: {fileID: 7222772195008265937, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
+      propertyPath: cost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222772195008265937, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
       propertyPath: index
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7222772195008265937, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
+      propertyPath: currentAbility
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b8bde168d0b3ac4e925ef905bdd7fa9, type: 2}
     - target: {fileID: 9023983234122613013, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -396,6 +404,10 @@ PrefabInstance:
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: tilePos
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1321,6 +1333,14 @@ PrefabInstance:
       propertyPath: tilePos
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: facingLeft
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1419,9 +1439,17 @@ PrefabInstance:
       value: Action Button (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7222772195008265937, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
+      propertyPath: cost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222772195008265937, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
       propertyPath: index
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 7222772195008265937, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
+      propertyPath: currentAbility
+      value: 
+      objectReference: {fileID: 11400000, guid: 44627dbc9d628a64495123ec1d06e929, type: 2}
     - target: {fileID: 9023983234122613013, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2149,6 +2177,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 93a5ed7b5250db94c83b25406f80cc75, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

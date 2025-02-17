@@ -14,11 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: One Step Movement
   icon: {fileID: 21300000, guid: 32feed88d925f00449b989375fbc0379, type: 3}
-  cost: 1
-  abilityType: 1
+  cost: 2
+  canTargetEmpty: 1
+  abilityRange: 1
+  abilityMinRange: 0
+  targetingType: 0
+  omniDirectional: 0
+  isAoE: 0
+  attackAbility: 0
+  movementAbility: 1
+  specialAbility: 0
+  healAbility: 0
   dmgAmount: 0
-  dmgRange: 0
+  accuracy: 0
   movementType: {fileID: 11400000, guid: ee1d1ca1f1ec0df44a0df50eef46f759, type: 2}
-  selfHeal: 0
   healAmount: 0
-  healRange: 0

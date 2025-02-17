@@ -10,14 +10,14 @@ public class ActionButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI costText; //display the action point cost of an ability
     [SerializeField] private Image image; //this is set to the abilities icon
     [SerializeField] private BaseAbility currentAbility;
-    private int cost = 1;
+    [SerializeField] private int cost;
 
     public int Cost { get { return cost; } }
     public bool Selected { get { return outline.enabled; } }
 
     private void Start()
     {
-        costText.text = cost.ToString();
+       costText.text = cost.ToString();
         DeSelect();
     }
 
@@ -31,6 +31,8 @@ public class ActionButton : MonoBehaviour
 
     public void Select() //highlight the selected ability while turning off the highlight for all other abilities
     {
+        if (ActionManager.instance.CheckActionsLeft()) return;
+        
         if (outline.enabled)
         {
             DeSelect();
@@ -52,6 +54,11 @@ public class ActionButton : MonoBehaviour
 
     public void HighlightTiles() //indicate which tiles can be targeted by the selected ability
     {
-        if(currentAbility!=null)currentAbility.GetAbilityTargets(CharacterManager.instance.SelectedCharacter);
+
+        if (currentAbility != null)
+        {
+            currentAbility.GetAbilityTargets(CharacterManager.instance.SelectedCharacter);
+
+        }
     }
 }

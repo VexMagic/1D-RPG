@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 973ef9e0496102240b5feacb85167ea6, type: 3}
-  m_Name: Turn Ability
+  m_Name: Strike Ability
   m_EditorClassIdentifier: 
-  abilityName: Turn
-  icon: {fileID: 21300000, guid: a307100edfe907d4a8ece3c6d0b9cf1c, type: 3}
+  abilityName: Strike
+  icon: {fileID: 21300000, guid: 4d35f70f9f36c0c43903b0cc2873a4da, type: 3}
   cost: 1
   canTargetEmpty: 1
-  abilityRange: 0
+  abilityRange: 1
   abilityMinRange: 0
-  targetingType: 4
-  omniDirectional: 0
+  targetingType: 1
+  omniDirectional: 1
   isAoE: 0
-  attackAbility: 0
-  movementAbility: 1
+  attackAbility: 1
+  movementAbility: 0
   specialAbility: 0
   healAbility: 0
-  dmgAmount: 0
-  accuracy: 0
-  movementType: {fileID: 11400000, guid: 356d530bdebc4be4fb7bb5dd46b36aa0, type: 2}
+  dmgAmount: 2
+  accuracy: 100
+  movementType: {fileID: 0}
   healAmount: 0

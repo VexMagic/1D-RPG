@@ -17,13 +17,11 @@ public class BasicMovement: MovementType
         if (tempCharacter != null)
         {
             Debug.Log("Couldnt move there since there was already someone there");
-            base.SetPosition(character.TilePos, character);
+            base.SetPosition(character.TilePos, tempCharacter);
         }
-        else
-        {
-            Debug.Log("Moved");
+       
             base.SetPosition(index, character);
-        }
+
         
     }
    
