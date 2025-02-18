@@ -14,16 +14,20 @@ namespace BehaviorTreeSpace
         Character target;
         Character character;
         int damage;
-        public BasicAttackTask(Character character, int damage) : base() 
+        BaseAbility ability;
+        public BasicAttackTask(Character character, int damage, BaseAbility ability) : base() 
         {
             this.character = character;
             this.damage = damage;
+            this.ability = ability;
         }
 
         public override NodeState Evaluate()
         {
             target = (Character)GetData("target");
-            target.TakeDamage(damage);
+            ActionManager.instance.SetCurrentAbility(ability);
+            ability.ActivateAbility(target.TilePos, character);
+            ActionManager.instance.SpendActions();
             return NodeState.success;
         }
 

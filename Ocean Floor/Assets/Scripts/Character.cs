@@ -16,11 +16,16 @@ public class Character : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private BaseAbility[] abilities;
 
+    
     public bool facingLeft = false;
     private int currentHealth;
     private bool AoE;
 
+    public bool isEnemy;
+    public BehaviorTreeSpace.BehaviorTree behaviorTree;
+
     public int TilePos { get { return tilePos; } set { tilePos = value; } } //the tile the character is standing on
+    public BaseAbility[] Abilities { get { return abilities; } set { abilities = value; } } //abilities
 
     private void Start()
     {
@@ -29,6 +34,11 @@ public class Character : MonoBehaviour
 
         CharacterManager.instance.AddCharacterToList(this);
         Deselect();
+
+        if(isEnemy)
+        { 
+            behaviorTree = GetComponent<BehaviorTreeSpace.BehaviorTree>();
+        }
     }
 
     public void TakeDamage(int damage)

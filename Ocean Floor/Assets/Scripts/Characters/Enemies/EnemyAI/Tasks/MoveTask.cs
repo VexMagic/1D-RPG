@@ -11,10 +11,12 @@ namespace BehaviorTreeSpace
     {
         int targetIndex;
         Character character;
-        public MoveTask(Character character, int targetIndex) : base() 
+        BaseAbility ability;
+        public MoveTask(Character character, int targetIndex, BaseAbility ability) : base() 
         {
             this.targetIndex = targetIndex;
             this.character = character;
+            this.ability = ability;
         }
 
 
@@ -27,15 +29,20 @@ namespace BehaviorTreeSpace
             
             if(character.TilePos != targetIndex + 1 && character.TilePos != targetIndex - 1)
             {
-                ////move
-                //if (character.TilePos < targetIndex)
-                //{
-                //    character.EnemyMove(character.TilePos + 1);
-                //}
-                //else
-                //{
-                //    character.EnemyMove(character.TilePos - 1);
-                //}
+                //move
+                if (character.TilePos < targetIndex)
+                {
+                    ability.ActivateAbility(character.TilePos + 1, character);
+                    ActionManager.instance.SetCurrentAbility(ability);
+                    ActionManager.instance.SpendActions();
+                }
+                else
+                {
+                    ability.ActivateAbility(character.TilePos - 1, character);
+                    ActionManager.instance.SetCurrentAbility(ability);
+                    ActionManager.instance.SpendActions();
+
+                }
             }
             else
             {

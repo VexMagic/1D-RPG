@@ -25,7 +25,11 @@ namespace BehaviorTreeSpace
             //update kör rootens evaluate, som då kör igenom trädet
             if(root != null)
             {
-                root.Evaluate();
+                for(int i = 0; i < ActionManager.instance.ActionsLeft; i++)
+                {
+                    root.Evaluate();
+                }
+                
             }
         }
         //detta måste implementeras i subklassen eftersom det är baserat på vilka noder som ska användas

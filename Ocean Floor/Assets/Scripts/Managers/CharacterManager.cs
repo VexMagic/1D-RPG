@@ -43,8 +43,13 @@ public class CharacterManager : MonoBehaviour
         if (initiativeOrder == allCharacters.Count)
             initiativeOrder = 0;
 
-
         allCharacters[initiativeOrder].SelectCharacter();
+
+        if (selectedCharacter.isEnemy)
+        {
+            selectedCharacter.behaviorTree.Search();
+            EndTurn();
+        }
 
     }
 

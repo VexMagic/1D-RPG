@@ -13,10 +13,12 @@ namespace BehaviorTreeSpace
     {
         int targetIndex;
         Character character;
-        public TurnTask(Character character, int targetIndex) : base() 
+        BaseAbility ability;
+        public TurnTask(Character character, int targetIndex, BaseAbility ability) : base() 
         {
             this.targetIndex = targetIndex;
             this.character = character;
+            this.ability = ability;
         }
 
 
@@ -27,19 +29,25 @@ namespace BehaviorTreeSpace
         {
             targetIndex = (int)parent.GetData("targetPos");
 
-            //if (character.TilePos < targetIndex && character.FacingLeft)
-            //{
-            //    character.EnemyTurnAround();
-            //}
-            //else if (character.TilePos > targetIndex && !character.FacingLeft)
-            //{
-            //    character.EnemyTurnAround();
-            //}
-            //else
-            //{
-            //    return NodeState.failure;
-            //}
-                Debug.Log("Turning to target");
+            if (character.TilePos < targetIndex && character.facingLeft)
+            {
+                ability.ActivateAbility(2, character);
+                ActionManager.instance.SetCurrentAbility(ability);
+                ActionManager.instance.SpendActions();
+            }
+            else if (character.TilePos > targetIndex && !character.facingLeft)
+            {
+                ability.ActivateAbility(2, character);
+                ActionManager.instance.SetCurrentAbility(ability);
+                ActionManager.instance.SpendActions();
+            }
+            else
+            {
+                return NodeState.failure;
+            }
+
+
+            Debug.Log("Turning to target");
             return NodeState.success;
         }
 

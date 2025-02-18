@@ -18,13 +18,13 @@ public class BasicEnemyBT : BehaviorTree
             {
                 new GetTargetTask(thisCharacter, 0),
 
-                new TurnTask(thisCharacter, targetIndex),
+                new TurnTask(thisCharacter, targetIndex, thisCharacter.Abilities[1]),
             }),
             new Sequence(new List<Node>
             {
                 new GetTargetTask(thisCharacter, 0),
                 //om basic enemy har för lågt HP flyttar den sig och sen healar
-                new MoveTask(thisCharacter, targetIndex),
+                new MoveTask(thisCharacter, targetIndex, thisCharacter.Abilities[0]),
 
             }),
             //the sequence that turns the enemy to face the target
@@ -32,7 +32,7 @@ public class BasicEnemyBT : BehaviorTree
             new Sequence(new List<Node>
             {
                 new GetTargetTask(thisCharacter, 0),
-                new BasicAttackTask(thisCharacter, 1),
+                new BasicAttackTask(thisCharacter, 1, thisCharacter.Abilities[2]),
             }),
         });
         return root;
