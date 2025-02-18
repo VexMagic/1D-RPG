@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -21,6 +22,9 @@ public class ActionManager : MonoBehaviour
     {
         instance = this;
         buttons = FindObjectsOfType<ActionButton>();
+        buttons = buttons.OrderBy(obj => obj.transform.parent?.GetSiblingIndex() ?? -1) // Sort by parent first
+        .ThenBy(obj => obj.transform.GetSiblingIndex()) // Then sort within parent
+        .ToArray();
         actionBar.SetActive(false);
     }
 
@@ -33,11 +37,8 @@ public class ActionManager : MonoBehaviour
     {
         for (int i = 0; i < abilities.Length; i++)
         {
-            foreach (var item in buttons)
-            {
-                item.SetValues(abilities[i]);
+           if(buttons[i]!=null)buttons[i].SetValues(abilities[i]);
 
-            }
         }
     }
     public bool CheckActionsLeft()

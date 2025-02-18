@@ -291,6 +291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Action Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5344860749167511873, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7222772195008265937, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
       propertyPath: cost
       value: 2
@@ -407,8 +411,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b8bde168d0b3ac4e925ef905bdd7fa9, type: 2}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 93a5ed7b5250db94c83b25406f80cc75, type: 2}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 44627dbc9d628a64495123ec1d06e929, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1339,8 +1355,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 93a5ed7b5250db94c83b25406f80cc75, type: 2}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b8bde168d0b3ac4e925ef905bdd7fa9, type: 2}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 44627dbc9d628a64495123ec1d06e929, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2179,12 +2207,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
+      objectReference: {fileID: 11400000, guid: 3b8bde168d0b3ac4e925ef905bdd7fa9, type: 2}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.data[1]
+      value: 
       objectReference: {fileID: 11400000, guid: 93a5ed7b5250db94c83b25406f80cc75, type: 2}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: abilities.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 44627dbc9d628a64495123ec1d06e929, type: 2}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: basicMovementAbilities.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: basicMovementAbilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b8bde168d0b3ac4e925ef905bdd7fa9, type: 2}
+    - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: basicMovementAbilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 44627dbc9d628a64495123ec1d06e929, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

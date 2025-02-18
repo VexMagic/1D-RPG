@@ -31,7 +31,7 @@ public class ActionButton : MonoBehaviour
 
     public void Select() //highlight the selected ability while turning off the highlight for all other abilities
     {
-        if (ActionManager.instance.CheckActionsLeft()) return;
+        if (!ActionManager.instance.CheckActionsLeft()) return;
         
         if (outline.enabled)
         {

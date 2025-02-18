@@ -1,15 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Ability", menuName = "Ability")]
 
 public class BaseAbility : ScriptableObject
 {
-     //Fields for all abilities
-    [SerializeField] private string abilityName;    
-    [SerializeField] private Sprite icon; 
+    //Fields for all abilities
+    [SerializeField] private string abilityName;
+    [SerializeField] private Sprite icon;
     [SerializeField] private int cost; //how many action points the ability costs. 2 is standard
 
     [SerializeField] private bool canTargetEmpty = true;
@@ -21,16 +22,16 @@ public class BaseAbility : ScriptableObject
     [SerializeField] private bool omniDirectional;
     [SerializeField] private bool isAoE;
     private AbilityTargeting abilityTargeting;
-    
+
     public string Name { get { return abilityName; } }
     public Sprite Icon { get { return icon; } }
     public int Cost { get { return cost; } }
 
     [SerializeField] private bool attackAbility;
     [SerializeField] private bool movementAbility;
-    [SerializeField] private bool specialAbility;
     [SerializeField] private bool healAbility;
-  
+    [SerializeField] private bool specialEffect;
+
     //Unique Fields
     //Attack
     [SerializeField] private int dmgAmount;
@@ -39,13 +40,14 @@ public class BaseAbility : ScriptableObject
     [SerializeField] private MovementType movementType;
     //Special
     //List of special effects
+    [SerializeField] private List<BaseSEffect> specialEffectsList;
     //Heal
     [SerializeField] private int healAmount;
     //make sure that the values can only be read and not changed
-    
+
     public void GetAbilityTargets(Character character)
     {
-       
+
         abilityTargeting = new AbilityTargeting();
         abilityTargeting.targetingType = targetingType;
         abilityTargeting.omniDirectional = omniDirectional;
@@ -54,24 +56,10 @@ public class BaseAbility : ScriptableObject
         abilityTargeting.isAoE = isAoE;
         abilityTargeting.GetAvaialbleTargets(character);
     }
-    public void ActivateAbility(int index,Character character )
+    public void ActivateAbility(int index, Character character)
     {
         if (attackAbility)
         {
-            //FOR AOE DAMAGE
-            //foreach (var item in TileManager.instance.TileData) //target all highlighted tiles
-            //{
-            //    if (item.IsHighlighted)
-            //    {
-            //        //check if there is a character on the tile before dealing damage
-            //        Character tempCharacter = CharacterManager.instance.GetCharacter(item.Index);
-            //        if (tempCharacter != null)
-            //        {
-
-            //        }
-            //    }
-            //}
-
             DealDamage(index);
         }
         if (movementAbility)
@@ -79,10 +67,17 @@ public class BaseAbility : ScriptableObject
             movementType.Move(index, character.TilePos, character);
         }
         if (healAbility)
-        { }
-        if (specialAbility)
-        { }
-
+        {
+            Heal(index);
+        }
+        if (specialEffect)
+        {
+            if (specialEffectsList.Count == 0) return;
+            foreach (BaseSEffect effect in specialEffectsList)
+            {
+                effect.ApplyEffect(index, character);
+            }
+        }
     }
 
     //some abilities might deal extra damage if a condition is met
@@ -97,5 +92,11 @@ public class BaseAbility : ScriptableObject
         Character tempCharacter = CharacterManager.instance.GetCharacter(index);
         if (tempCharacter != null)
             tempCharacter.TakeDamage(ActionManager.instance.CurrentAbility.dmgAmount);
+    }
+    public void Heal(int index)
+    {
+        Character tempCharacter = CharacterManager.instance.GetCharacter(index);
+        if (tempCharacter != null)
+            tempCharacter.Heal(ActionManager.instance.CurrentAbility.healAmount);
     }
 }

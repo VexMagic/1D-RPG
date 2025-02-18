@@ -16,7 +16,7 @@ public class AbilityEditor : Editor //This script allows us to show different pr
 
     private SerializedProperty attackAbilityProp;
     private SerializedProperty movementAbilityProp;
-    private SerializedProperty specialAbilityProp;
+    private SerializedProperty specialEffectProp;
     private SerializedProperty healAbilityProp;
 
 
@@ -25,6 +25,8 @@ public class AbilityEditor : Editor //This script allows us to show different pr
 
     private SerializedProperty movementTypeProp;
     private SerializedProperty healAmountProp;
+
+    private SerializedProperty specialEffectListProp;
 
     private void OnEnable()
     {
@@ -42,14 +44,14 @@ public class AbilityEditor : Editor //This script allows us to show different pr
         // Ability Type
         attackAbilityProp = serializedObject.FindProperty("attackAbility");
         movementAbilityProp = serializedObject.FindProperty("movementAbility");
-        specialAbilityProp = serializedObject.FindProperty("specialAbility");
+        specialEffectProp = serializedObject.FindProperty("specialEffect");
         healAbilityProp = serializedObject.FindProperty("healAbility");
         // Cache the properties
         dmgAmountProp = serializedObject.FindProperty("dmgAmount");
         accuracyProp = serializedObject.FindProperty("accuracy");
         movementTypeProp = serializedObject.FindProperty("movementType");
         healAmountProp = serializedObject.FindProperty("healAmount");
-
+        specialEffectListProp = serializedObject.FindProperty("specialEffectsList");
 
     }
 
@@ -110,10 +112,12 @@ public class AbilityEditor : Editor //This script allows us to show different pr
             EditorGUI.indentLevel -= 3;
         }
 
-        EditorGUILayout.PropertyField(specialAbilityProp);
-        if (specialAbilityProp.boolValue)
+        EditorGUILayout.PropertyField(specialEffectProp);
+        if (specialEffectProp.boolValue)
         {
-            // Add special properties here if needed
+            EditorGUI.indentLevel += 3;
+            EditorGUILayout.PropertyField(specialEffectListProp, new GUIContent("Special Effects"));
+            EditorGUI.indentLevel -= 3;
         }
 
         EditorGUILayout.PropertyField(healAbilityProp);

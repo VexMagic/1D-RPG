@@ -23,9 +23,10 @@ MonoBehaviour:
   isAoE: 0
   attackAbility: 0
   movementAbility: 1
-  specialAbility: 0
   healAbility: 0
+  specialEffect: 0
   dmgAmount: 0
   accuracy: 0
   movementType: {fileID: 11400000, guid: 356d530bdebc4be4fb7bb5dd46b36aa0, type: 2}
+  specialEffectsList: []
   healAmount: 0

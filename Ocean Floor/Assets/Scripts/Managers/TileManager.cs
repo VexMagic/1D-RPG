@@ -11,10 +11,11 @@ public class TileManager : MonoBehaviour
     [SerializeField] private SpriteRenderer renderer;
     [SerializeField] private int amount;
 
-    private List<GameObject> tiles = new List<GameObject>();
+    public List<GameObject> tiles = new List<GameObject>();
     private List<GroundTile> tileData = new List<GroundTile>();
 
     public List<GroundTile> TileData { get { return tileData; } }
+    
 
     private void Awake()
     {
@@ -57,6 +58,11 @@ public class TileManager : MonoBehaviour
 
     public void HighlightTiles(List<int> indexes, bool AoE)
     { 
+        //if(indexes.Count == 0)
+        //{
+        //    ActionManager.instance.DeSelectActions();
+        //    return;
+        //}
         for (int i = 0; i < tiles.Count; i++)
         {
             tileData[i].Highlight(indexes.Contains(i), AoE);

@@ -42,7 +42,14 @@ public class Character : MonoBehaviour
             //add death
         }
     }
-
+    public void Heal(int amount)
+    {
+        if (currentHealth + amount <= maxHealth)
+        {
+            currentHealth += amount;
+        }
+        SetHealthbar();
+    }
     private void SetHealthbar() //updates the healthbar to show how much health compared to the max health the character has
     {
         float healthPercent = (float)currentHealth / (float)maxHealth;

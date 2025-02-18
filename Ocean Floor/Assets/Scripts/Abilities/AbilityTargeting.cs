@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 using UnityEditor.Playables;
 
-public enum TargetingType { MovementTargeting, MeleeTargeting, RangedTargeting, MinimumRangedTargeting, SelfTargeting };
+public enum TargetingType { MovementTargeting, MeleeTargeting, RangedTargeting, MinimumRangedTargeting, SelfTargeting, AllTarget };
 
 public class AbilityTargeting 
 {
@@ -37,6 +37,9 @@ public class AbilityTargeting
             case TargetingType.SelfTargeting:
                 SelfTargeting(character);
                 break;
+            case TargetingType.AllTarget:
+                TargetAll();
+                break;
         }
 
         TileManager.instance.HighlightTiles(targetTileList, isAoE);
@@ -52,16 +55,15 @@ public class AbilityTargeting
         int tempTile = character.TilePos;
         if (omniDirectional)
         {
-           
             Character tempCharacter1 = CharacterManager.instance.GetCharacter(tempTile - 1);
             if (tempCharacter1 != null)
             {
-                targetTileList.Add(tempTile);
+                targetTileList.Add(tempTile-1);
             }
-            tempCharacter1 = CharacterManager.instance.GetCharacter(tempTile +1 );
+            tempCharacter1 = CharacterManager.instance.GetCharacter(tempTile + 1 );
             if (tempCharacter1 != null)
             {
-                targetTileList.Add(tempTile);
+                targetTileList.Add(tempTile+1);
             }
         }
         else
@@ -153,5 +155,17 @@ public class AbilityTargeting
     private void SelfTargeting(Character character)
     {
         targetTileList.Add(character.TilePos);
+    }
+
+    private void TargetAll()
+    {
+        for (int i = 0; i < TileManager.instance.tiles.Count; i++)
+        {
+            Character tempCharacter1 = CharacterManager.instance.GetCharacter(i);
+            if (tempCharacter1 != null)
+            {
+                targetTileList.Add(i);
+            }
+        }
     }
 }
