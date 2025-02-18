@@ -14,10 +14,26 @@ public class NodeButton : MonoBehaviour
     void Start()
     {
         UpdateAppearance();
+
+        Button btn = GetComponent<Button>();
+        if (btn != null)
+        {
+            btn.onClick.RemoveAllListeners(); // Remove old listeners
+            btn.onClick.AddListener(OnClick); // Attach OnClick() to Unity button
+
+            Debug.Log($"Button click event assigned for {targetNode?.type}");
+        }
+        else
+        {
+            Debug.LogError("No Button component found on " + gameObject.name);
+        }
     }
+
+
 
     public void OnClick()
     {
+        Debug.Log("KLICKAT");
         mapManager.MoveToNode(targetNode);
     }
 
