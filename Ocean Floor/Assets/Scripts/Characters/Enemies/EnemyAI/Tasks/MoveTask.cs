@@ -27,15 +27,15 @@ namespace BehaviorTreeSpace
             
             if(character.TilePos != targetIndex + 1 && character.TilePos != targetIndex - 1)
             {
-                //move
-                if (character.TilePos < targetIndex)
-                {
-                    character.EnemyMove(character.TilePos + 1);
-                }
-                else
-                {
-                    character.EnemyMove(character.TilePos - 1);
-                }
+                ////move
+                //if (character.TilePos < targetIndex)
+                //{
+                //    character.EnemyMove(character.TilePos + 1);
+                //}
+                //else
+                //{
+                //    character.EnemyMove(character.TilePos - 1);
+                //}
             }
             else
             {

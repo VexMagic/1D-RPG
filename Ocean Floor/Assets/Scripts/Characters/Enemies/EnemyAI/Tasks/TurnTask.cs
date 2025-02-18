@@ -27,18 +27,18 @@ namespace BehaviorTreeSpace
         {
             targetIndex = (int)parent.GetData("targetPos");
 
-            if (character.TilePos < targetIndex && character.FacingLeft)
-            {
-                character.EnemyTurnAround();
-            }
-            else if (character.TilePos > targetIndex && !character.FacingLeft)
-            {
-                character.EnemyTurnAround();
-            }
-            else
-            {
-                return NodeState.failure;
-            }
+            //if (character.TilePos < targetIndex && character.FacingLeft)
+            //{
+            //    character.EnemyTurnAround();
+            //}
+            //else if (character.TilePos > targetIndex && !character.FacingLeft)
+            //{
+            //    character.EnemyTurnAround();
+            //}
+            //else
+            //{
+            //    return NodeState.failure;
+            //}
                 Debug.Log("Turning to target");
             return NodeState.success;
         }
