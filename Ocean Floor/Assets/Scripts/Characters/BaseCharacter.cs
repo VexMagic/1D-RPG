@@ -12,3 +12,5 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] private float crit; //critical hit chance (0f - 1f = 0% - 100%)
     [SerializeField] private float dodge; //chance to take no damage (0f - 1f = 0% - 100%)
 }
+
+
