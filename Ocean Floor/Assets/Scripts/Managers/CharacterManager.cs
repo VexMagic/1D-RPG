@@ -46,11 +46,6 @@ public class CharacterManager : MonoBehaviour
 
         allCharacters[initiativeOrder].SelectCharacter();
 
-        if(selectedCharacter != null && selectedCharacter.IsEnemy)
-        {
-            selectedCharacter.StartEnemyTurn();
-            EndTurn();
-        }
     }
 
     public void AddCharacterToList(Character character)
