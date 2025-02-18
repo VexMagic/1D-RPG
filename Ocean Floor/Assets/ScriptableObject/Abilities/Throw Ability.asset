@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 973ef9e0496102240b5feacb85167ea6, type: 3}
+  m_Name: Throw Ability
+  m_EditorClassIdentifier: 
+  abilityName: Throw
+  icon: {fileID: 21300000, guid: c36d19aed612cdd42b5b76638c60071f, type: 3}
+  cost: 1
+  canTargetEmpty: 1
+  abilityRange: 6
+  abilityMinRange: 0
+  targetingType: 3
+  omniDirectional: 0
+  isAoE: 0
+  attackAbility: 1
+  movementAbility: 0
+  healAbility: 0
+  specialEffect: 0
+  dmgAmount: 2
+  accuracy: 0
+  movementType: {fileID: 0}
+  specialEffectsList: []
+  healAmount: 0
