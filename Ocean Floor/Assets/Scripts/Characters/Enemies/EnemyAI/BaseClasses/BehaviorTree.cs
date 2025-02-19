@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace BehaviorTreeSpace
@@ -23,16 +22,25 @@ namespace BehaviorTreeSpace
         public void Search()
         {
             //update kör rootens evaluate, som då kör igenom trädet
-            if(root != null)
+            if (root != null)
             {
-                for(int i = 0; i < ActionManager.instance.ActionsLeft; i++)
-                {
-                    root.Evaluate();
-                }
-                
+                StartCoroutine(DelayAction(0.5f));
             }
+
         }
         //detta måste implementeras i subklassen eftersom det är baserat på vilka noder som ska användas
         protected abstract Node CreateTree();
+        //coroutine to delay the actions taken
+        protected IEnumerator DelayAction(float delay)
+        {
+            for (int i = 0; i < ActionManager.instance.ActionsLeft; i++)
+            {
+                yield return new WaitForSeconds(delay);
+                root.Evaluate();
+            }
+            CharacterManager.instance.EndTurn();
+        }
+
+
     }
 }

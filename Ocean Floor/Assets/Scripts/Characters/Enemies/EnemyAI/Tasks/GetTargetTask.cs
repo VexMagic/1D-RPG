@@ -42,7 +42,6 @@ namespace BehaviorTreeSpace
                 }
                 if (targetFound)
                 {
-                    Debug.Log("Target found at index: " + target.TilePos);
                     parent.SetData("target", target);
                     parent.SetData("targetPos", target.TilePos);
                     return NodeState.success;

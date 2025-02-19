@@ -16,12 +16,16 @@ public class BasicEnemyBT : BehaviorTree
             //the sequence that moves the enemy to the target
             new Sequence(new List<Node>
             {
+                new CheckActionsTask(thisCharacter.Abilities[1]),
+
                 new GetTargetTask(thisCharacter, 0),
 
                 new TurnTask(thisCharacter, targetIndex, thisCharacter.Abilities[1]),
             }),
             new Sequence(new List<Node>
             {
+                new CheckActionsTask(thisCharacter.Abilities[0]),
+
                 new GetTargetTask(thisCharacter, 0),
                 //om basic enemy har för lågt HP flyttar den sig och sen healar
                 new MoveTask(thisCharacter, targetIndex, thisCharacter.Abilities[0]),
@@ -31,6 +35,8 @@ public class BasicEnemyBT : BehaviorTree
             //the sequence that attacks the target
             new Sequence(new List<Node>
             {
+                new CheckActionsTask(thisCharacter.Abilities[2]),
+
                 new GetTargetTask(thisCharacter, 0),
                 new BasicAttackTask(thisCharacter, 1, thisCharacter.Abilities[2]),
             }),

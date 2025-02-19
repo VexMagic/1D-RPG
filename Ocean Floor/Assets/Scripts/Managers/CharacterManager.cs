@@ -48,7 +48,6 @@ public class CharacterManager : MonoBehaviour
         if (selectedCharacter.isEnemy)
         {
             selectedCharacter.behaviorTree.Search();
-            EndTurn();
         }
 
     }

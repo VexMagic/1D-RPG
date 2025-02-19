@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Strike
   icon: {fileID: 21300000, guid: 4d35f70f9f36c0c43903b0cc2873a4da, type: 3}
-  cost: 1
+  cost: 2
   canTargetEmpty: 0
   abilityRange: 1
   abilityMinRange: 0

@@ -24,10 +24,11 @@ namespace BehaviorTreeSpace
 
         public override NodeState Evaluate()
         {
+            Debug.Log("Attacking target costing:" + ability.Cost);
             target = (Character)GetData("target");
             ActionManager.instance.SetCurrentAbility(ability);
             ability.ActivateAbility(target.TilePos, character);
-            ActionManager.instance.SpendActions();
+            ActionManager.instance.SpendActions(ability);
             return NodeState.success;
         }
 

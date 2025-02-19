@@ -18,11 +18,6 @@ namespace BehaviorTreeSpace
             this.character = character;
             this.ability = ability;
         }
-
-
-        
-
-
         public override NodeState Evaluate()
         {
             targetIndex = (int)parent.GetData("targetPos");
@@ -48,7 +43,10 @@ namespace BehaviorTreeSpace
             {
                return NodeState.failure;
             }
+
             Debug.Log("Moving to target");
+
+            ActionManager.instance.SpendActions(ability);
             return NodeState.success;
         }
 

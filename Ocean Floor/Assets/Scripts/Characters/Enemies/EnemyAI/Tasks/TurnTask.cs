@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -20,11 +21,6 @@ namespace BehaviorTreeSpace
             this.character = character;
             this.ability = ability;
         }
-
-
-        
-
-
         public override NodeState Evaluate()
         {
             targetIndex = (int)parent.GetData("targetPos");
@@ -46,8 +42,8 @@ namespace BehaviorTreeSpace
                 return NodeState.failure;
             }
 
-
             Debug.Log("Turning to target");
+            ActionManager.instance.SpendActions(ability);
             return NodeState.success;
         }
 

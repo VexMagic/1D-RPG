@@ -57,6 +57,15 @@ public class ActionManager : MonoBehaviour
         }
         return true;
     }
+    public bool CheckActionsLeft(BaseAbility ability)
+    {
+        int actions = ability.Cost;
+        if (actionsLeft < actions)
+        {
+            return false;
+        }
+        return true;
+    }
     public void SpendActions() //spend action points
     {
         int actions = 0;
@@ -67,6 +76,13 @@ public class ActionManager : MonoBehaviour
             actions = actionButton.Cost;
             Debug.Log(actions);
         }
+        SetAction(actionsLeft - actions);
+       
+    }
+     public void SpendActions(BaseAbility ability) //spend action points
+    {
+        int actions = ability.Cost;
+
         SetAction(actionsLeft - actions);
        
     }
