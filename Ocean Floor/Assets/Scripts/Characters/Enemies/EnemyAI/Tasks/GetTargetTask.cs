@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace BehaviorTreeSpace
 {
-    
-public class GetTargetTask : Node
+
+    public class GetTargetTask : Node
     {
         Character target;
         int targetPos;
@@ -21,27 +21,39 @@ public class GetTargetTask : Node
             int searchRadius = 1;
             bool targetFound = false;
 
-            while (!targetFound)
+            for (int i = 0; i < TileManager.instance.tiles.Count; i++)
             {
-                if(CharacterManager.instance.GetCharacter(character.TilePos + searchRadius) != null)
+                if (character.TilePos + searchRadius <= TileManager.instance.tiles.Count)
                 {
-                    target = CharacterManager.instance.GetCharacter(character.TilePos + searchRadius);
-                    targetFound = true;
+
+                    if (CharacterManager.instance.GetCharacter(character.TilePos + searchRadius) != null)
+                    {
+                        target = CharacterManager.instance.GetCharacter(character.TilePos + searchRadius);
+                        targetFound = true;
+                    }
                 }
-                else if (CharacterManager.instance.GetCharacter(character.TilePos - searchRadius) != null)
+                if (character.TilePos - searchRadius >= 0)
                 {
-                    target = CharacterManager.instance.GetCharacter(character.TilePos - searchRadius);
-                    targetFound = true;
+                    if (CharacterManager.instance.GetCharacter(character.TilePos - searchRadius) != null)
+                    {
+                        target = CharacterManager.instance.GetCharacter(character.TilePos - searchRadius);
+                        targetFound = true;
+                    }
                 }
+                if (targetFound)
+                {
+                    Debug.Log("Target found at index: " + target.TilePos);
+                    parent.SetData("target", target);
+                    parent.SetData("targetPos", target.TilePos);
+                    return NodeState.success;
+                 }
                 else
                 {
                     searchRadius++;
                 }
             }
-            Debug.Log("Target found at index: " + target.TilePos);
-            parent.SetData("target", target);
-            parent.SetData("targetPos", target.TilePos);
-            return NodeState.success;
+            return NodeState.failure;
         }
     }
 }
+
