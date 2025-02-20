@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Throw
   icon: {fileID: 21300000, guid: c36d19aed612cdd42b5b76638c60071f, type: 3}
-  cost: 1
+  cost: 2
   canTargetEmpty: 1
   abilityRange: 6
-  abilityMinRange: 0
+  abilityMinRange: 3
   targetingType: 3
   omniDirectional: 0
   isAoE: 0

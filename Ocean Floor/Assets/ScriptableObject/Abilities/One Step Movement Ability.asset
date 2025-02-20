@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: One Step Movement
   icon: {fileID: 21300000, guid: 32feed88d925f00449b989375fbc0379, type: 3}
-  cost: 2
+  cost: 1
   canTargetEmpty: 1
   abilityRange: 1
   abilityMinRange: 0

@@ -88,7 +88,7 @@ public class AbilityEditor : Editor //This script allows us to show different pr
         {
             case TargetingType.MinimumRangedTargeting:
                 EditorGUI.indentLevel += 3;
-                EditorGUILayout.PropertyField(abilityRangeProp, new GUIContent("Minimum Range"));
+                EditorGUILayout.PropertyField(abilityMinRangeProp, new GUIContent("Minimum Range"));
                 EditorGUI.indentLevel -= 3;
 
                 break;

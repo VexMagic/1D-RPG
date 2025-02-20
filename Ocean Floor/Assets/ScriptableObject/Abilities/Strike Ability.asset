@@ -19,7 +19,7 @@ MonoBehaviour:
   abilityRange: 1
   abilityMinRange: 0
   targetingType: 1
-  omniDirectional: 1
+  omniDirectional: 0
   isAoE: 0
   attackAbility: 1
   movementAbility: 0

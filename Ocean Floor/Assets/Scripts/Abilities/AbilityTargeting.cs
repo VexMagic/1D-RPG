@@ -83,20 +83,24 @@ public class AbilityTargeting
     }
     private void RangedTargeting(Character character)
     {
+        bool shotLeft = false;
+        bool shotRight = false;
         for (int i = 1; i <= abilityRange; i++) //loop through all tiles in a direction until the max targets or max range is reached
         {
             int tempTile = character.TilePos;
             if (omniDirectional)
             {
                 Character tempCharacter1 = CharacterManager.instance.GetCharacter(tempTile - i);
-                if (tempCharacter1 != null)
+                if (tempCharacter1 != null && !shotLeft)
                 {
-                    targetTileList.Add(tempTile);
+                    shotLeft = true;
+                    targetTileList.Add(tempTile - i);
                 }
                 tempCharacter1 = CharacterManager.instance.GetCharacter(tempTile + i);
-                if (tempCharacter1 != null)
+                if (tempCharacter1 != null && !shotRight)
                 {
-                    targetTileList.Add(tempTile);
+                    shotRight = true;
+                    targetTileList.Add(tempTile + i);
                 }
 
             }
@@ -111,6 +115,7 @@ public class AbilityTargeting
                 if (tempCharacter != null)
                 {
                     targetTileList.Add(tempTile);
+                    break;
                 }
             }
            

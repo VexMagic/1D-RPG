@@ -297,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7222772195008265937, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
       propertyPath: cost
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7222772195008265937, guid: ed01089cee7918c4a8b2310a71c8bdbe, type: 3}
       propertyPath: index
@@ -416,7 +416,7 @@ PrefabInstance:
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 3b8bde168d0b3ac4e925ef905bdd7fa9, type: 2}
+      objectReference: {fileID: 11400000, guid: b24a5e0061dc32f40a074b6c4a6cfbfe, type: 2}
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.data[1]
       value: 
@@ -424,7 +424,7 @@ PrefabInstance:
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 44627dbc9d628a64495123ec1d06e929, type: 2}
+      objectReference: {fileID: 11400000, guid: df9fee5afea132641a08d317b03de7a1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1417,15 +1417,15 @@ PrefabInstance:
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 93a5ed7b5250db94c83b25406f80cc75, type: 2}
+      objectReference: {fileID: 11400000, guid: b24a5e0061dc32f40a074b6c4a6cfbfe, type: 2}
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 3b8bde168d0b3ac4e925ef905bdd7fa9, type: 2}
+      objectReference: {fileID: 11400000, guid: 93a5ed7b5250db94c83b25406f80cc75, type: 2}
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 44627dbc9d628a64495123ec1d06e929, type: 2}
+      objectReference: {fileID: 11400000, guid: df9fee5afea132641a08d317b03de7a1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2219,6 +2219,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2994326497298643996, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: m_Color.b
+      value: 0.049999952
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994326497298643996, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117953411525608181, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: m_Color.b
+      value: 0.05064392
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117953411525608181, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3555770624751313184, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: m_Name
       value: Character
@@ -2270,7 +2286,7 @@ PrefabInstance:
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 3b8bde168d0b3ac4e925ef905bdd7fa9, type: 2}
+      objectReference: {fileID: 11400000, guid: b24a5e0061dc32f40a074b6c4a6cfbfe, type: 2}
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.data[1]
       value: 
@@ -2278,7 +2294,7 @@ PrefabInstance:
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: abilities.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 44627dbc9d628a64495123ec1d06e929, type: 2}
+      objectReference: {fileID: 11400000, guid: df9fee5afea132641a08d317b03de7a1, type: 2}
     - target: {fileID: 6049832584464476896, guid: 0fdbfa9419439db44af48e002c9ae050, type: 3}
       propertyPath: basicMovementAbilities.Array.size
       value: 2
